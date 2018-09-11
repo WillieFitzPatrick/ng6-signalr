@@ -1,0 +1,23 @@
+<div class="page-container">
+
+   <div [style.height.px]="divHeight" [style.width.%]="divWidth" [style.background-color]="grayBackground ? 'gray' : 'white'" class="div1"></div>
+   <p>Div with [style.height.px] = {{divHeight}} and [style.width.%] = {{divWidth}} - style binding</p>
+
+   <div [style.height.px]="divHeight" [style.width.%]="divWidth" [class]="grayBackground ? 'gray-bg' : 'white-bg'"></div>
+   <p>Same div as above but with class binding</p>
+
+   <br>
+   <div>
+      <mat-slide-toggle [(ngModel)]="grayBackground">Gray Background
+      </mat-slide-toggle>
+   </div>
+   <br>
+   <div [@isDivVisible]="isDivVisible" class="card">
+      <img src="https://angular.io/assets/images/logos/angular/angular.svg" [attr.width]="imageSize" [attr.height]="imageSize" />
+      <p>Animated Image, Height and Width is set with attribute binding</p>
+      <button *ngIf="isDivVisible == 'yes'" mat-button (click)="hideImage()">Hide Image</button>
+   </div>
+   <br>
+   <button mat-raised-button color="primary" (click)="goBack()">Go Back</button>
+
+</div>

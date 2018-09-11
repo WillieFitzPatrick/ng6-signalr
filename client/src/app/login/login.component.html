@@ -1,0 +1,63 @@
+
+
+<div fxLayout="row" fxLayoutAlign="center center" class="login-page-container">
+   <div class="login-container">
+      <mat-card class="login-card mat-elevation-z4">
+         <mat-card-title>
+            <mat-icon style="font-size: 24px; color: blue;">
+               lock_open
+            </mat-icon>
+            Login
+         </mat-card-title>
+         <hr>
+         <mat-card-content align="center">
+            <form [formGroup]="loginForm" style="margin-top: 50px;">
+
+
+               <div>
+                  <mat-form-field style="width: 200px;">
+                     <mat-select formControlName="user" placeholder="User" [compareWith]="compareFn">
+                        <mat-option *ngFor="let user of users" [value]="user">
+                           {{user.name}} - ({{user.userRole.userRole}})
+                        </mat-option>
+                     </mat-select>
+                  </mat-form-field>
+               </div>
+            </form>
+
+            <div *ngIf="loginInProcess" fxLayout="column" fxLayoutAlign="center center">
+               <div fxFlex>
+                  <div class="message">
+                     <span>Validating user</span>
+                  </div>
+               </div>
+               <div fxFlex style="margin-top: 10px;">
+                  <mat-progress-spinner [diameter]="20" mode="indeterminate">
+                  </mat-progress-spinner>
+               </div>
+            </div>
+            <div *ngIf="connectingToHub" fxLayout="column" fxLayoutAlign="center center">
+               <div fxFlex>
+                  <div class="message">
+                     <span>Connecting To SignalR Hub</span>
+                  </div>
+               </div>
+               <div fxFlex style="margin-top: 10px;">
+                  <mat-progress-spinner [diameter]="20" mode="indeterminate">
+                  </mat-progress-spinner>
+               </div>
+            </div>
+
+         </mat-card-content>
+         <mat-card-actions align="center">
+            <button mat-raised-button color="primary" *ngIf="!loginInProcess && !loginError"  (click)="onLogin($event)">
+               <mat-icon>
+                  input
+               </mat-icon>
+               login
+            </button>
+         </mat-card-actions>
+      </mat-card>
+   </div>
+</div>
+

@@ -1,0 +1,14 @@
+/Users/willie/code/gestionB2/server/bin/Release/netcoreapp2.1/server.deps.json
+/Users/willie/code/gestionB2/server/bin/Release/netcoreapp2.1/server.runtimeconfig.json
+/Users/willie/code/gestionB2/server/bin/Release/netcoreapp2.1/server.runtimeconfig.dev.json
+/Users/willie/code/gestionB2/server/bin/Release/netcoreapp2.1/server.dll
+/Users/willie/code/gestionB2/server/bin/Release/netcoreapp2.1/server.pdb
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.csprojAssemblyReference.cache
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.csproj.CoreCompileInputs.cache
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.RazorAssemblyInfo.cache
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.RazorAssemblyInfo.cs
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.AssemblyInfoInputs.cache
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.AssemblyInfo.cs
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.RazorTargetAssemblyInfo.cache
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.dll
+/Users/willie/code/gestionB2/server/obj/Release/netcoreapp2.1/server.pdb

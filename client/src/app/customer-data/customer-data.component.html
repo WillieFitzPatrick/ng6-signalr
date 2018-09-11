@@ -1,0 +1,20 @@
+<div *ngIf="showData">
+   <div [@isCardVisible]="isCardVisible" class="card">
+      <h3>
+         {{cliente?.Fantasia}}
+      </h3>
+      <h5>
+         <span *ngIf="cliente.Cliente">de {{cliente?.Cliente}}</span>
+      </h5>
+      <div>
+         <div><b>{{cliente?.Calle}}</b></div>
+         <div>{{cliente?.CodPos}} {{cliente?.Ciudad}}</div>
+         <div>{{cliente?.Provincia}} </div>
+         <br> {{cliente?.Telefono}}
+         <br> {{cliente?.Mail}}
+         <br>
+         <br> {{cliente?.TipoDoc?.Documento}} : {{cliente?.NroDoc}}
+         <br> {{cliente?.CondicionIVA?.CondicionIVA}}
+      </div>
+   </div>
+</div>

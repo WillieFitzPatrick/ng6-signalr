@@ -1,0 +1,29 @@
+.config-page-container {
+   height: calc( 100vh - 106px ); 
+   width: 100%;
+   background-color: rgb(255,255,255);
+   margin: 0;
+   padding: 0;
+}
+
+.menu-items-container{
+   margin-top: 50px;
+}
+
+.menu-card {
+   margin: 10px; 
+   min-height: 120px; 
+   min-width: 150px; 
+   max-width: 150px; 
+   text-align: center; 
+   padding: 20px;
+   cursor: pointer;
+}
+
+.menu-card:hover { 
+   background-color: rgb(240,240,240);
+}
+
+.icon {
+   font-size: 40px;
+}

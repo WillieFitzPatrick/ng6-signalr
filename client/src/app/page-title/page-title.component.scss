@@ -1,0 +1,22 @@
+.page-title-container {
+   font-family: Roboto;
+   font: Lato;
+   text-align: left; 
+   font-size: 16px;
+   font-weight: 400;
+   height: 20px;
+   width: 100%;
+   background-color: rgb(255,255,255);
+   padding: 0;
+   border-bottom: 1px solid lightgray;
+}
+
+.page-title {
+   margin-left: 20px;
+}
+
+.waiting-message {
+   margin-left: 20px;
+   color: blue;
+   /* background-color: blue; */
+}

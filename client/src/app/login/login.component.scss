@@ -1,0 +1,29 @@
+
+.login-page-container {
+   height: calc( 100vh - 106px ); 
+   background-color: rgb(255,255,255);
+   margin: 0;
+   padding: 0;
+}
+.login-container {
+   position: absolute;
+   top: 150px;
+   margin-left: auto;
+   width: 500px;
+   min-width: 500px;
+   height: 350px;
+   min-height: 350px;
+}
+.login-card {
+   height: 300px;
+}
+.error {
+   color: rgb(180, 52, 52);
+   font-size: 14px;
+   margin-top: 10px;
+}
+.message {
+   color: green;
+   font-size: 14px;
+   margin-top: 10px;
+}

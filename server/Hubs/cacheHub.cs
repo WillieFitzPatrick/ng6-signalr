@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
-namespace Server.Hubs
+namespace server.Hubs
 {
     public class cacheHub : Hub
     {

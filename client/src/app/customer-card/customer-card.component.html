@@ -1,0 +1,30 @@
+<div class="page-container">
+   <div fxLayout="row">
+      <div fxFlex="50" class="card-container">
+         <mat-card class="card">
+            <mat-card-title>
+               List of Customers
+            </mat-card-title>
+            <mat-card-content>
+               <router-outlet name="list"></router-outlet>
+            </mat-card-content>
+         </mat-card>
+      </div>
+      <div fxFlex="50" class="card-container">
+         <mat-card class="card">
+            <mat-card-title>
+               Customer Data
+            </mat-card-title>
+            <mat-card-content>
+               <div * ngIf="!cliente">
+                  <h3>Please Select a Customer</h3>
+               </div>
+               <router-outlet name="data"></router-outlet>
+            </mat-card-content>
+         </mat-card>
+      </div>
+   </div>
+
+   <button mat-raised-button color="primary" (click)="goBack()">Go Back</button>
+
+</div>

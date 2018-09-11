@@ -1,0 +1,10 @@
+<mat-list style="cursor: pointer;">
+   <mat-list-item *ngFor="let cliente of clientes" (click)="showData(cliente.Id)">
+      <mat-icon matListIcon>person</mat-icon>
+      <h3 matLine> {{cliente.Cliente}} </h3>
+   </mat-list-item>
+</mat-list>
+
+<app-customer-list-count>
+   Customers Count : {{clientes?.length}}
+</app-customer-list-count>

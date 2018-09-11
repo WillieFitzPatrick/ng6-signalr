@@ -1,0 +1,194 @@
+
+<div *ngIf="currentView==2">
+
+   <div fxLayout="row" fxLayoutAlign="center">
+      <div class="page-container">
+         <div class="page-header-container">
+            <mat-card class="page-header">
+               <mat-card-title-group fxLayout="row">
+                  <mat-card-title>Customers</mat-card-title>
+                  <mat-card-subtitle> {{cnt_clientes}} customers.</mat-card-subtitle>
+
+                  <div fxFlex>
+                  </div>
+
+                  <div class="search-input-container" fxLayout="row">
+                     <div fxLayoutAlign="center center">
+                        <mat-icon class="search-input-icon">search</mat-icon>
+                        <input class="search-input" #filter (keyup)="applyFilter($event.target.value)">
+                     </div>
+                  </div>
+
+                  <div fxFlex>
+                  </div>
+
+                  <sw-toolbar [toolbar]="actionsToolbar" (onButtonClicked)="toolbarButtonClicked($event)"></sw-toolbar>
+               </mat-card-title-group>
+            </mat-card>
+         </div>
+
+         <div class="data-container">
+            <div class="data-inner-container mat-elevation-z8">
+
+               <mat-table #table [dataSource]="dataSource" matSort>
+
+                  <ng-container matColumnDef="Cliente">
+                     <mat-header-cell *matHeaderCellDef mat-sort-header> Customer </mat-header-cell>
+                     <mat-cell *matCellDef="let element" class="cell-align-start">
+                        <div flexLayout="column">
+                           <div>
+                              {{element.Cliente}}
+                           </div>
+                           <div>
+                              <small>{{element.TipoDoc.Documento}} : {{element.NroDoc}}</small>
+                           </div>
+                        </div>
+                     </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Fantasia">
+                     <mat-header-cell *matHeaderCellDef mat-sort-header> Company </mat-header-cell>
+                     <mat-cell *matCellDef="let element" class="cell-align-start"> {{element.Fantasia}} </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Direccion">
+                     <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+                     <mat-cell *matCellDef="let element" class="cell-align-start">
+                        <div flexLayout="column">
+                           <div>
+                              {{element.Calle}}
+                           </div>
+                           <div>
+                              <small>({{element.CodPos}}) {{element.Ciudad}} - {{element.Provincia}}</small>
+                           </div>
+                        </div>
+                     </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="CondicionIVA">
+                     <mat-header-cell *matHeaderCellDef mat-sort-header> IRS </mat-header-cell>
+                     <mat-cell *matCellDef="let element" class="cell-align-start"> {{element.CondicionIVA.CondicionIVA}} </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Estado">
+                     <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                     <mat-cell *matCellDef="let element">
+                        <span [style.color]="element.Estado===0 ? 'red' : 'blue'">{{(element.Estado===0) ? 'Suspended' : 'Active'}}</span>
+                     </mat-cell>
+                  </ng-container>
+
+                  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)" [style.background-color]="getBackgroundColor(row)"></mat-row>
+               </mat-table>
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div *ngIf="currentView==3">
+   <div class="edit-card-row-container">
+      <div fxLayout="row" fxLayoutAlign="center">
+         <div fxFlex="50">
+            <mat-card>
+               <mat-card-title>
+                  {{xFormTitle}}
+               </mat-card-title>
+               <mat-card-content>
+
+                  <form [formGroup]="xForm" style="margin-top: 50px;">
+
+
+                     <div>
+                        <mat-form-field style="width: 60%;">
+                           <input matInput formControlName="Cliente" type="text" placeholder="Name" (blur)="validateNameLength()" (focus)="showNameError = false">
+                        </mat-form-field>
+                        <div *ngIf="showNameError" style="color: red;"> Customer Name is too short, min is 10 chars</div>
+                     </div>
+                     <div>
+                        <mat-form-field style="width: 60%;">
+                           <input matInput formControlName="Fantasia" type="text" placeholder="Fantasy Name">
+                        </mat-form-field>
+                     </div>
+
+                     <div>
+                        <mat-form-field style="width: 20%;">
+                           <mat-select formControlName="TipoDoc" placeholder="Document Type" [compareWith]="compareFn">
+                              <mat-option *ngFor="let TipoDoc of TiposDoc" [value]="TipoDoc">
+                                 {{TipoDoc.Documento}}
+                              </mat-option>
+                           </mat-select>
+                        </mat-form-field>
+                        <mat-form-field style="width: 30%; margin-left: 20px;">
+                              <input matInput formControlName="NroDoc" type="text" placeholder="Document Number">
+                           </mat-form-field>
+                     </div>  
+
+                     <div>
+                        <mat-form-field style="width: 60%;">
+                           <mat-select formControlName="CondicionIVA" placeholder="IRS Condition" [compareWith]="compareFn">
+                              <mat-option *ngFor="let CondicionIVA of CondicionesIVA" [value]="CondicionIVA">
+                                 {{CondicionIVA.CondicionIVA}}
+                              </mat-option>
+                           </mat-select>
+                        </mat-form-field>
+                     </div>  
+
+                     <div>
+                        <mat-form-field style="width: 60%;">
+                           <input matInput formControlName="Calle" type="text" placeholder="Street" >
+                        </mat-form-field>
+                     </div>
+                     <div>
+                        <mat-form-field style="width: 20%;">
+                           <input matInput formControlName="CodPos" type="text" placeholder="Postal Code" >
+                        </mat-form-field>
+                        <mat-form-field style="width: 50%;margin-left: 20px;">
+                           <input matInput formControlName="Ciudad" type="text" placeholder="City" >
+                        </mat-form-field>
+                     </div>
+                     <div>
+                        <mat-form-field style="width: 60%;">
+                           <input matInput formControlName="Provincia" type="text" placeholder="Province" >
+                        </mat-form-field>
+                     </div>
+
+                     <div>
+                        <mat-form-field style="width: 60%;">
+                           <input matInput formControlName="Telefono" type="text" placeholder="Telephone" >
+                        </mat-form-field>
+                     </div>
+                     <div>
+                           <mat-form-field style="width: 60%;">
+                              <input matInput formControlName="Mail" type="text" placeholder="Mail" (blur)="validateEmail()" (focus)="showMailError = false">
+                           </mat-form-field>
+                           <div *ngIf="showMailError" style="color: red;"> Mail is not valid</div>
+                        </div>                     
+                     <div>
+                        <mat-slide-toggle style="margin: 10px;" formControlName="Estado">Activo
+                        </mat-slide-toggle>
+                     </div>
+
+                  </form>
+
+               </mat-card-content>
+
+               <mat-card-actions align="end">
+                  <button mat-button (click)="cancel()">
+                     <mat-icon matListIcon style="color: red;">
+                        close
+                     </mat-icon>
+                     Cancelar
+                  </button>
+                  <button mat-button (click)="save()">
+                     <mat-icon matListIcon [style.color]="!this.xForm.valid || this.showMailError || this.showNameError ? 'lightgray' : 'green'">
+                        check_circle
+                     </mat-icon>
+                     Aceptar
+                  </button>
+               </mat-card-actions>
+            </mat-card>
+         </div>
+      </div>
+
+   </div>
+</div>

@@ -4,13 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+// using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Server.Hubs;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+// using Microsoft.IdentityModel.Tokens;
+// using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+using server.Hubs;
+using server.Models;
 
 namespace server
 {
@@ -26,7 +34,20 @@ namespace server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var cnnString = "Server=SQL5002.site4now.net;" + 
+                            "Initial Catalog=DB_9FB841_gestionb2;" + 
+                            "User Id=DB_9FB841_gestionb2_admin;"+
+                            "Password=gesTionB2.7813;";
+            services.AddDbContext<dataContext>(opt => opt.UseSqlServer(cnnString));
+
+            services.AddMvc()
+                    //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                    .AddJsonOptions(options => {
+                       options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                       options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    });   
+
             services.AddSignalR();
         }
 
@@ -52,7 +73,8 @@ namespace server
             app.UseSignalR(routes =>
             {
                 routes.MapHub<cacheHub>("/cacheHub");
-            });      
+            });
+            
             app.UseMvc();
         }
     }

@@ -1,0 +1,35 @@
+<div class="config-page-container">
+   <div fxLayout="row">
+
+      <div fxFlex>
+      </div>
+
+      <div fxFlex="12" fxLayoutAlign="center center" class="search-input-container">
+         <mat-icon class="search-input-icon">search</mat-icon>
+         <input class="search-input" #filter (keyup)="applyFilter($event.target.value)">
+      </div>
+
+      <div fxFlex="8">
+      </div>
+   </div>
+
+   <div class="menu-items-container">
+      <div fxLayout="row wrap" fxLayoutAlign="center center">
+         <div *ngFor="let item of filteredMenu">
+            <div class="menu-card" (click)="doOpen(item.path)">
+               <mat-icon class="icon" [ngStyle]="{'color': getIconColor(item) }">
+                  {{item.icon}}
+               </mat-icon>
+               <h4>
+                  {{item.title}}
+               </h4>
+               <p>
+                  <small>
+                     {{item.description}}
+                  </small>
+               </p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+// body {
+//    font-family: Roboto;
+// }
+
+body {
+   font-family: Roboto,'Helvetica Neue',sans-serif;
+   margin: 0;
+}
+
+// -----------------------------
+// Para las paginas con datos
+// -----------------------------
+.page-container {
+   position: relative;
+   width: 100%;
+   height: calc(100vh - 120px);
+   // border: 1px solid orange;
+   text-align: center;
+   padding: 3px;
+}
+
+.page-header-container{
+   width: 100%;
+   max-width: 100%;
+   margin: 0 auto;
+ }
+
+.page-header{
+   height: 50px;
+   max-height: 50px;
+ }
+
+.data-container {
+   margin-top: 10px;
+   width: 100%;
+   height: calc(100vh - 224px);
+   //border: 1px solid red;
+   overflow: hidden;
+   background-color: white;
+ }
+
+.data-inner-container {
+   overflow: auto;
+   // border: 1px solid green; 
+   height: 99%;
+   min-height: 99%;
+}
+
+.edit-card-row-container {
+   position: absolute;
+   top: 60px;
+   width: 100%;
+ }
+
+.filter-card-row-container {
+   position: absolute;
+   top: 60px;
+   /* left: 60px; */
+   width: 100%;
+}
+
+// -----------------------------
+// Table cells alignment
+// -----------------------------
+.cell-align-start {
+   text-align: left;
+}
+
+
+// -----------------------------
+// Search Component
+// -----------------------------
+.search-input-container{
+   border: 1px solid #d1d1d1;
+   width: 160px;
+   height: 35px;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+   -webkit-transition: all 0.7s ease 0s;
+   -moz-transition: all 0.7s ease 0s;
+   -o-transition: all 0.7s ease 0s;
+   transition: all 0.7s ease 0s;
+}
+
+.search-input-icon{
+   margin-left: 5px;
+   vertical-align: middle;
+}
+.search-input{
+   margin-left: 10px;
+   color: darkmagenta;
+   border: none;
+   width: 100px;
+   font-size: 16px;
+}
+.search-input:focus{
+   outline: none;
+}
