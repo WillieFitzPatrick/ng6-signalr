@@ -35,10 +35,10 @@ namespace server
         public void ConfigureServices(IServiceCollection services)
         {
 
-            var cnnString = "Server=SQL5002.site4now.net;" + 
-                            "Initial Catalog=DB_9FB841_gestionb2;" + 
-                            "User Id=DB_9FB841_gestionb2_admin;"+
-                            "Password=gesTionB2.7813;";
+            var cnnString = "server;" + 
+                  "Initial Catalog=db;" + 
+                  "User Id=user;"+
+                  "Password=password;";
             services.AddDbContext<dataContext>(opt => opt.UseSqlServer(cnnString));
 
             services.AddMvc()
